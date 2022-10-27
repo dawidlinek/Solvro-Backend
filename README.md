@@ -14,7 +14,7 @@
 * Add product to cart
 * Remove product from cart
 * Change quantity of product in the cart
-* Add promo code
+* Add coupon
 * Display cart information
 * Share cart by link
 
@@ -22,15 +22,88 @@
 
 ## Used technologies
  * Adonis js - fullstack framework for node js. 
- * MySql database - for storing carts, products and promo codes. 
+ * MySql database - for storing carts, products and coupons. 
 
-## Products
+## Project structure
+<pre>
+📦Solvro-Backend
+ ┣ 📂.github
+ ┃ ┗ 📂workflows
+ ┃ ┃ ┗ 📜CI&CD.yml - test and deploy workflow
+ ┣ 📂app
+ ┃ ┣ 📂<b> Controllers </b>
+ ┃ ┃ ┗ 📂<b> Http </b>
+ ┃ ┃ ┃ ┣ 📜CouponsController.ts
+ ┃ ┃ ┃ ┣ 📜ProductsController.ts
+ ┃ ┃ ┃ ┗ 📜ShippingMethodsController.ts
+ ┃ ┣ 📂<b> Models </b>
+ ┃ ┃ ┣ 📜Coupon.ts
+ ┃ ┃ ┣ 📜Product.ts
+ ┃ ┃ ┗ 📜ShippingMethod.ts
+ ┃ ┗ 📜.editorconfig
+ ┣ 📂commands
+ ┃ ┗ 📜index.ts
+ ┣ 📂config
+ ┃ ┣ 📜app.ts
+ ┃ ┣ 📜bodyparser.ts
+ ┃ ┣ 📜cors.ts
+ ┃ ┣ 📜database.ts
+ ┃ ┣ 📜drive.ts
+ ┃ ┣ 📜hash.ts
+ ┃ ┗ 📜session.ts
+ ┣ 📂contracts
+ ┃ ┣ 📜drive.ts
+ ┃ ┣ 📜env.ts
+ ┃ ┣ 📜events.ts
+ ┃ ┣ 📜hash.ts
+ ┃ ┗ 📜tests.ts
+ ┣ 📂database
+ ┃ ┣ 📂factories
+ ┃ ┃ ┣ 📜index.ts
+ ┃ ┃ ┗ 📜ProductFactory.ts
+ ┃ ┣ 📂<b>migrations</b>
+ ┃ ┃ ┣ 📜1666883185132_products.ts
+ ┃ ┃ ┣ 📜1666885711897_coupons.ts
+ ┃ ┃ ┗ 📜1666886361017_shipping_methods.ts
+ ┃ ┗ 📂<b>seeders</b>
+ ┃ ┃ ┣ 📜CouponSeeder.ts
+ ┃ ┃ ┣ 📜ProductSeeder.ts
+ ┃ ┃ ┗ 📜ShippingMethodSeeder.ts
+ ┣ 📂Exceptions
+ ┃ ┗ 📜Handler.ts
+ ┣ 📂providers
+ ┃ ┗ 📜AppProvider.ts
+ ┣ 📂start
+ ┃ ┣ 📜kernel.ts
+ ┃ ┗ 📜<b>routes.ts</b>
+ ┣ 📂<b>tests</b>
+ ┃ ┣ 📂functional
+ ┃ ┃ ┣ 📜coupon.spec.ts
+ ┃ ┃ ┣ 📜product.spec.ts
+ ┃ ┃ ┗ 📜shipping_method.spec.ts
+ ┃ ┣ 📜.editorconfig
+ ┃ ┗ 📜bootstrap.ts
+ ┣ 📜.adonisrc.json
+ ┣ 📜.editorconfig
+ ┣ 📜.env
+ ┣ 📜.env.example
+ ┣ 📜.env.test
+ ┣ 📜.gitignore
+ ┣ 📜.prettierignore
+ ┣ 📜ace
+ ┣ 📜ace-manifest.json
+ ┣ 📜env.ts
+ ┣ 📜package-lock.json
+ ┣ 📜package.json
+ ┣ 📜README.md
+ ┣ 📜server.ts
+ ┣ 📜test.ts
+ ┗ 📜tsconfig.json
+ </pre>
 
 
-## Promo codes
 
-
-## Usage
+## Installation
 
 First install application:
 ```bash
@@ -45,6 +118,17 @@ node ace migration:run
 node ace db:seed
 ```
 
+## Using
+
+In development:
+```bash
+node ace serve --watch
+```
+In production:
+```bash
+node ace build
+node dist/server.js
+```
 
 ## Testing
 ```bash
