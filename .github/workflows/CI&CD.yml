@@ -1,4 +1,4 @@
-name: CD&CD
+name: CI&CD
 on:
   push:
     branches: [ "main" ]
@@ -15,7 +15,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: cache-node-modules-${{ hashFiles('package-lock.lock') }} 
+          key: cache-node-modules-${{ hashFiles('package-lock.lock') }}
       - uses: actions/setup-node@v3
         if: steps.cache.outputs.cache-hit != 'true'
         with:
@@ -37,7 +37,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: node_modules
-          key: cache-node-modules-${{ hashFiles('package-lock.lock') }} 
+          key: cache-node-modules-${{ hashFiles('package-lock.lock') }}
       - uses: actions/setup-node@v3
         if: steps.cache.outputs.cache-hit != 'true'
         with:
@@ -48,4 +48,4 @@ jobs:
       - name: Build project
         run: node ace build
         # Deploy to ftp
-  
+
