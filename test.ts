@@ -14,6 +14,7 @@
 
 process.env.NODE_ENV = 'test'
 
+import fs from 'fs'
 import 'reflect-metadata'
 import sourceMapSupport from 'source-map-support'
 import { Ignitor } from '@adonisjs/core/build/standalone'
@@ -29,6 +30,12 @@ kernel
   .then(({ runnerHooks, ...config }) => {
     const app: RunnerHooksHandler[] = [() => kernel.start()]
 
+    const envExists = fs.existsSync('./.env')
+
+    if (!envExists) {
+      fs.copyFile('./.env.example', '.env', () => null)
+    }
+
     configure({
       ...kernel.application.rcFile.tests,
       ...processCliArgs(process.argv.slice(2)),
@@ -42,4 +49,8 @@ kernel
     })
 
     run()
+
+    if (!envExists) {
+      fs.unlinkSync('./.env')
+    }
   })
