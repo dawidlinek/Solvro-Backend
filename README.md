@@ -1,7 +1,5 @@
 # Solvro-Backend
 
-
-
 [![made-with-adonisjs](https://img.shields.io/badge/Made%20with-AdonisJS-5a45ff.svg)](https://adonisjs.com/)
 [![made-for-Solvro](https://img.shields.io/badge/Made%20for-Solvro-80B3FF.svg)](https://github.com/Solvro/Rekrutacja2022)
 ![Testing](https://github.com/dawidlinek123/Solvro-Backend/actions/workflows/CI&CD.yml/badge.svg)
@@ -11,20 +9,22 @@
 
 ## Functionalities:
 
-* Add product to cart
-* Remove product from cart
-* Change quantity of product in the cart
-* Add coupon
-* Display cart information
-* Share cart by link
+- Add product to cart
+- Remove product from cart
+- Change quantity of product in the cart
+- Add coupon
+- Display cart information
+- Share cart by link
 
 </p>
 
 ## Used technologies
- * Adonis js - fullstack framework for node js. 
- * MySql database - for storing carts, products and coupons. 
+
+- Adonis js - fullstack framework for node js.
+- MySql database - for storing carts, products and coupons.
 
 ## Project structure
+
 <pre>
 📦Solvro-Backend
  ┣ 📂.github
@@ -101,11 +101,10 @@
  ┗ 📜tsconfig.json
  </pre>
 
-
-
 ## Installation
 
 First install application:
+
 ```bash
 npm install
 ```
@@ -113,6 +112,7 @@ npm install
 Then copy rename .env.example file to .env and put your config inside.
 
 Migrate and seed database:
+
 ```bash
 node ace migration:run
 node ace db:seed
@@ -121,16 +121,20 @@ node ace db:seed
 ## Using
 
 In development:
+
 ```bash
 node ace serve --watch
 ```
+
 In production:
+
 ```bash
 node ace build
 node dist/server.js
 ```
 
 ## Testing
+
 ```bash
 node ace test
 ```
