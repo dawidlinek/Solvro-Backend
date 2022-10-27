@@ -22,6 +22,7 @@
 
 ## Used technologies
  * Adonis js - fullstack framework for node js. 
+ * MySql database - for storing carts, products and promo codes. 
 
 ## Products
 
@@ -31,5 +32,21 @@
 
 ## Usage
 
+First install application:
+```bash
+npm install
+```
+
+Then copy rename .env.example file to .env and put your config inside.
+
+Migrate and seed database:
+```bash
+node ace migration:run
+node ace db:seed
+```
+
 
 ## Testing
+```bash
+node ace test
+```
