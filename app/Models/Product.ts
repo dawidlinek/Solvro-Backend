@@ -11,6 +11,17 @@ export default class Product extends BaseModel {
   @column()
   public price: number
 
+  public serializeExtras() {
+    if (!this.$extras.pivot_quantity) {
+      return {}
+    }
+
+    return {
+      quantity: this.$extras.pivot_quantity,
+      price_sum: this.$extras.pivot_quantity * this.price,
+    }
+  }
+
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
 

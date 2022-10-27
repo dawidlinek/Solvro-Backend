@@ -16,10 +16,4 @@ export default class Coupon extends BaseModel {
 
   @column()
   public percentageDiscount?: number
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }

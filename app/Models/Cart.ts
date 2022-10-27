@@ -1,5 +1,12 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column, HasOne, hasOne, ManyToMany, manyToMany } from '@ioc:Adonis/Lucid/Orm'
+import {
+  BaseModel,
+  BelongsTo,
+  belongsTo,
+  column,
+  ManyToMany,
+  manyToMany,
+} from '@ioc:Adonis/Lucid/Orm'
 import Coupon from './Coupon'
 import ShippingMethod from './ShippingMethod'
 import Product from './Product'
@@ -9,19 +16,20 @@ export default class Cart extends BaseModel {
   public id: number
 
   @column()
-  public couponId: number
+  public couponId?: number | null
 
-  @hasOne(() => Coupon)
-  public coupon: HasOne<typeof Coupon>
+  @belongsTo(() => Coupon)
+  public coupon: BelongsTo<typeof Coupon>
 
   @column()
-  public shippingMethodId: number
+  public shippingMethodId?: number | null
 
-  @hasOne(() => ShippingMethod)
-  public shippingMethod: HasOne<typeof ShippingMethod>
+  @belongsTo(() => ShippingMethod)
+  public shippingMethod: BelongsTo<typeof ShippingMethod>
 
   @manyToMany(() => Product, {
     pivotTable: 'cart_products',
+    pivotColumns: ['quantity'],
   })
   public products: ManyToMany<typeof Product>
 

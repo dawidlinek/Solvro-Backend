@@ -10,10 +10,4 @@ export default class ShippingMethod extends BaseModel {
 
   @column()
   public price: number
-
-  @column.dateTime({ autoCreate: true })
-  public createdAt: DateTime
-
-  @column.dateTime({ autoCreate: true, autoUpdate: true })
-  public updatedAt: DateTime
 }

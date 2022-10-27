@@ -21,7 +21,11 @@
 import Route from '@ioc:Adonis/Core/Route'
 
 Route.group(() => {
-  Route.get('products', 'ProductsController')
-  Route.get('coupons', 'CouponsController')
-  Route.get('shipping-methods', 'ShippingMethodsController')
+  Route.get('products', 'v1/ProductsController')
+  Route.get('coupons', 'v1/CouponsController')
+  Route.get('shipping-methods', 'v1/ShippingMethodsController')
+  Route.group(() => {
+    Route.post('', 'v1/CartsController.store')
+    Route.get('', 'v1/CartsController.show')
+  }).prefix('carts')
 }).prefix('api/v1')
