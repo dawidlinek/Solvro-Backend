@@ -1,0 +1,51 @@
+name: CD&CD
+on:
+  push:
+    branches: [ "main" ]
+
+
+jobs:
+
+  Test:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v3
+      - name: Cache node modules
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: cache-node-modules-${{ hashFiles('package-lock.lock') }} 
+      - uses: actions/setup-node@v3
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          node-version: 16
+      - name: Npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install --pure-lockfile
+      - name: Test project
+        run: node ace test
+
+
+  Deploy:
+      runs-on: ubuntu-latest
+      needs: Test
+      steps:
+      - uses: actions/checkout@v2
+      - name: Cache node modules
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: cache-node-modules-${{ hashFiles('package-lock.lock') }} 
+      - uses: actions/setup-node@v3
+        if: steps.cache.outputs.cache-hit != 'true'
+        with:
+          node-version: 16
+      - name: Npm install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install --pure-lockfile
+      - name: Build project
+        run: node ace build
+        # Deploy to ftp
+  
