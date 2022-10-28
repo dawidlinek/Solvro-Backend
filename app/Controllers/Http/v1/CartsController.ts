@@ -2,7 +2,6 @@ import Encryption from '@ioc:Adonis/Core/Encryption'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 import Cart from 'App/Models/Cart'
 import StoreCartValidator from 'App/Validators/StoreCartValidator'
-import Env from '@ioc:Adonis/Core/Env'
 
 export default class CartsController {
   public async show({ session, response }: HttpContextContract) {
