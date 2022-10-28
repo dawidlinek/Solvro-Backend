@@ -44,4 +44,12 @@ jobs:
         run: npm install --pure-lockfile
       - name: Build project
         run: node ace build
-        # Deploy to ftp
+      - name: Upload to ftp
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{ secrets.url }}
+          username: ${{ secrets.login }}
+          password: ${{ secrets.password }}
+          local-dir: "./dist/"
+          server-dir: "./api/"
+
