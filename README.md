@@ -32,15 +32,19 @@
  ┃ ┃ ┗ 📜CI&CD.yml - test and deploy workflow
  ┣ 📂app
  ┃ ┣ 📂<b> Controllers </b>
- ┃ ┃ ┗ 📂<b> Http </b>
- ┃ ┃ ┃ ┣ 📜CouponsController.ts
- ┃ ┃ ┃ ┣ 📜ProductsController.ts
- ┃ ┃ ┃ ┗ 📜ShippingMethodsController.ts
+ ┃ ┃ ┗ 📂Http
+ ┃ ┃ ┃ ┗ 📂v1
+ ┃ ┃ ┃ ┃ ┣ 📜CartsController.ts
+ ┃ ┃ ┃ ┃ ┣ 📜CouponsController.ts
+ ┃ ┃ ┃ ┃ ┣ 📜ProductsController.ts
+ ┃ ┃ ┃ ┃ ┗ 📜ShippingMethodsController.ts
  ┃ ┣ 📂<b> Models </b>
+ ┃ ┃ ┣ 📜Cart.ts
  ┃ ┃ ┣ 📜Coupon.ts
  ┃ ┃ ┣ 📜Product.ts
  ┃ ┃ ┗ 📜ShippingMethod.ts
- ┃ ┗ 📜.editorconfig
+ ┃ ┗ 📂<b> Validators </b>
+ ┃ ┃ ┗ 📜StoreCartValidator.ts
  ┣ 📂commands
  ┃ ┗ 📜index.ts
  ┣ 📂config
@@ -61,11 +65,13 @@
  ┃ ┣ 📂factories
  ┃ ┃ ┣ 📜index.ts
  ┃ ┃ ┗ 📜ProductFactory.ts
- ┃ ┣ 📂<b>migrations</b>
+ ┃ ┣ 📂<b> migrations </b>
  ┃ ┃ ┣ 📜1666883185132_products.ts
  ┃ ┃ ┣ 📜1666885711897_coupons.ts
- ┃ ┃ ┗ 📜1666886361017_shipping_methods.ts
- ┃ ┗ 📂<b>seeders</b>
+ ┃ ┃ ┣ 📜1666886361017_shipping_methods.ts
+ ┃ ┃ ┣ 📜1666892374004_carts.ts
+ ┃ ┃ ┗ 📜1666892457435_cart_products.ts
+ ┃ ┗ 📂<b> seeders</b>
  ┃ ┃ ┣ 📜CouponSeeder.ts
  ┃ ┃ ┣ 📜ProductSeeder.ts
  ┃ ┃ ┗ 📜ShippingMethodSeeder.ts
@@ -75,9 +81,10 @@
  ┃ ┗ 📜AppProvider.ts
  ┣ 📂start
  ┃ ┣ 📜kernel.ts
- ┃ ┗ 📜<b>routes.ts</b>
+ ┃ ┗ 📜routes.ts
  ┣ 📂<b>tests</b>
  ┃ ┣ 📂functional
+ ┃ ┃ ┣ 📜cart.spec.ts
  ┃ ┃ ┣ 📜coupon.spec.ts
  ┃ ┃ ┣ 📜product.spec.ts
  ┃ ┃ ┗ 📜shipping_method.spec.ts
@@ -99,7 +106,7 @@
  ┣ 📜server.ts
  ┣ 📜test.ts
  ┗ 📜tsconfig.json
- </pre>
+  </pre>
 
 ## Installation
 
@@ -143,3 +150,7 @@ node ace test
 
 API documentation can be found here:
 https://documenter.getpostman.com/view/23919868/2s8YK9KkZQ
+
+## Live demo
+
+This application is deployed on https://api.solvro.linek.dev
