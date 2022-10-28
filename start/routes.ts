@@ -25,6 +25,7 @@ Route.group(() => {
   Route.get('coupons', 'v1/CouponsController')
   Route.get('shipping-methods', 'v1/ShippingMethodsController')
   Route.group(() => {
+    Route.get('share/:cart', 'v1/CartsController.share')
     Route.post('', 'v1/CartsController.store')
     Route.get('', 'v1/CartsController.show')
   }).prefix('carts')

@@ -138,3 +138,8 @@ node dist/server.js
 ```bash
 node ace test
 ```
+
+## Documentation 
+
+API documentation can be found here:
+https://documenter.getpostman.com/view/23919868/2s8YK9KkZQ
